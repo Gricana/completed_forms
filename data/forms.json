@@ -1,0 +1,136 @@
+{
+    "forms": {
+        "1": {
+            "name": "Contact Form",
+            "email": "email",
+            "phone": "phone",
+            "message": "text"
+        },
+        "2": {
+            "name": "Registration Form",
+            "username": "text",
+            "password": "text",
+            "email": "email",
+            "birthdate": "date"
+        },
+        "3": {
+            "name": "Feedback Form",
+            "customer_name": "text",
+            "email": "email",
+            "feedback": "text"
+        },
+        "4": {
+            "name": "Job Application Form",
+            "full_name": "text",
+            "email": "email",
+            "phone": "phone",
+            "resume": "text"
+        },
+        "5": {
+            "name": "Order Form",
+            "order_id": "text",
+            "customer_name": "text",
+            "email": "email",
+            "delivery_date": "date"
+        },
+        "6": {
+            "name": "Survey Form",
+            "respondent_name": "text",
+            "email": "email",
+            "phone": "phone",
+            "feedback": "text"
+        },
+        "7": {
+            "name": "Login Form",
+            "username": "text",
+            "password": "text"
+        },
+        "8": {
+            "name": "Event Registration Form",
+            "attendee_name": "text",
+            "email": "email",
+            "phone": "phone",
+            "event_date": "date"
+        },
+        "9": {
+            "name": "Appointment Booking Form",
+            "patient_name": "text",
+            "email": "email",
+            "phone": "phone",
+            "appointment_date": "date"
+        },
+        "10": {
+            "name": "Newsletter Subscription Form",
+            "subscriber_name": "text",
+            "email": "email"
+        },
+        "11": {
+            "name": "Support Ticket Form",
+            "ticket_id": "text",
+            "customer_name": "text",
+            "email": "email",
+            "issue_description": "text"
+        },
+        "12": {
+            "name": "Product Inquiry Form",
+            "product_name": "text",
+            "customer_email": "email",
+            "inquiry": "text"
+        },
+        "13": {
+            "name": "Event Feedback Form",
+            "event_name": "text",
+            "attendee_name": "text",
+            "email": "email",
+            "feedback": "text"
+        },
+        "14": {
+            "name": "Volunteer Application Form",
+            "volunteer_name": "text",
+            "email": "email",
+            "phone": "phone",
+            "availability": "text"
+        },
+        "15": {
+            "name": "Reservation Form",
+            "customer_name": "text",
+            "email": "email",
+            "reservation_date": "date",
+            "special_requests": "text"
+        },
+        "16": {
+            "name": "Membership Application Form",
+            "applicant_name": "text",
+            "email": "email",
+            "phone": "phone",
+            "membership_type": "text"
+        },
+        "17": {
+            "name": "Donation Form",
+            "donor_name": "text",
+            "email": "email",
+            "phone": "phone",
+            "donation_amount": "text"
+        },
+        "18": {
+            "name": "Feedback Collection Form",
+            "name": "text",
+            "email": "email",
+            "phone": "phone",
+            "comments": "text"
+        },
+        "19": {
+            "name": "Online Application Form",
+            "applicant_name": "text",
+            "email": "email",
+            "phone": "phone",
+            "application_date": "date"
+        },
+        "20": {
+            "name": "Survey Response Form",
+            "survey_title": "text",
+            "respondent_email": "email",
+            "response": "text"
+        }
+    }
+}

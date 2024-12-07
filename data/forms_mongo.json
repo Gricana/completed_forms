@@ -1,0 +1,131 @@
+[{
+  "name": "Contact Form",
+  "email": "email",
+  "phone": "phone",
+  "message": "text"
+},
+{
+  "name": "Registration Form",
+  "username": "text",
+  "password": "text",
+  "email": "email",
+  "birthdate": "date"
+},
+{
+  "name": "Feedback Form",
+  "customer_name": "text",
+  "email": "email",
+  "feedback": "text"
+},
+{
+  "name": "Job Application Form",
+  "full_name": "text",
+  "email": "email",
+  "phone": "phone",
+  "resume": "text"
+},
+{
+  "name": "Order Form",
+  "order_id": "text",
+  "customer_name": "text",
+  "email": "email",
+  "delivery_date": "date"
+},
+{
+  "name": "Survey Form",
+  "respondent_name": "text",
+  "email": "email",
+  "phone": "phone",
+  "feedback": "text"
+},
+{
+  "name": "Login Form",
+  "username": "text",
+  "password": "text"
+},
+{
+  "name": "Event Registration Form",
+  "attendee_name": "text",
+  "email": "email",
+  "phone": "phone",
+  "event_date": "date"
+},
+{
+  "name": "Appointment Booking Form",
+  "patient_name": "text",
+  "email": "email",
+  "phone": "phone",
+  "appointment_date": "date"
+},
+{
+  "name": "Newsletter Subscription Form",
+  "subscriber_name": "text",
+  "email": "email"
+},
+{
+  "name": "Support Ticket Form",
+  "ticket_id": "text",
+  "customer_name": "text",
+  "email": "email",
+  "issue_description": "text"
+},
+{
+  "name": "Product Inquiry Form",
+  "product_name": "text",
+  "customer_email": "email",
+  "inquiry": "text"
+},
+{
+  "name": "Event Feedback Form",
+  "event_name": "text",
+  "attendee_name": "text",
+  "email": "email",
+  "feedback": "text"
+},
+{
+  "name": "Volunteer Application Form",
+  "volunteer_name": "text",
+  "email": "email",
+  "phone": "phone",
+  "availability": "text"
+},
+{
+  "name": "Reservation Form",
+  "customer_name": "text",
+  "email": "email",
+  "reservation_date": "date",
+  "special_requests": "text"
+},
+{
+  "name": "Membership Application Form",
+  "applicant_name": "text",
+  "email": "email",
+  "phone": "phone",
+  "membership_type": "text"
+},
+{
+  "name": "Donation Form",
+  "donor_name": "text",
+  "email": "email",
+  "phone": "phone",
+  "donation_amount": "text"
+},
+{
+  "name": "text",
+  "email": "email",
+  "phone": "phone",
+  "comments": "text"
+},
+{
+  "name": "Online Application Form",
+  "applicant_name": "text",
+  "email": "email",
+  "phone": "phone",
+  "application_date": "date"
+},
+{
+  "name": "Survey Response Form",
+  "survey_title": "text",
+  "respondent_email": "email",
+  "response": "text"
+}]
