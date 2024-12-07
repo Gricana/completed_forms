@@ -1,0 +1,35 @@
+[tool.poetry]
+name = "completed-forms"
+version = "0.1.0"
+description = ""
+authors = ["Gricana"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+fastapi = "^0.115.6"
+uvicorn = "^0.32.1"
+tinydb = "^4.8.2"
+pymongo = "^4.10.1"
+python-multipart = "^0.0.19"
+pytest = "^8.3.4"
+pytest-asyncio = "^0.24.0"
+httpx = "^0.28.1"
+
+[tool.poetry.group.dev.dependencies]
+flake8 = "^7.1.1"
+black = "^24.10.0"
+flake8-black = "^0.3.6"
+
+[tool.black]
+line-length = 88
+target-version = ["py312"]
+
+[tool.flake8]
+max-line-length = 88
+extend-ignore = ["E501", "W503"]
+plugins = ["flake8_black"]
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
