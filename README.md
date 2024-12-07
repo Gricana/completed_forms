@@ -52,6 +52,7 @@ STORAGE_COLLECTION=forms
 docker-compose up -d
 ```
 Приложение будет доступно по адресу: http://localhost:8000/get_form
+
 Документация API: http://localhost:8000/docs
 
 ### Тестирование
