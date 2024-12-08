@@ -1,10 +1,9 @@
-import re
-from datetime import datetime
-from typing import Dict, Literal, Callable, Tuple, List
+from typing import Dict
 
 from pydantic import BaseModel, Field, model_validator
 
-FieldType = Literal["date", "phone", "email", "text"]
+from app.models.field_validator import FieldType
+from app.models.field_validator import FieldValidator
 
 
 class FormTemplate(BaseModel):
@@ -54,75 +53,32 @@ class FormData(BaseModel):
     """
     Данные формы, переданные пользователем.
 
-    Поле:
+    Поля:
     - `data`: Словарь, содержащий поля формы и их значения.
+    - `field_types`: Словарь, автоматически определяемый на основе значений `data`.
     """
 
     data: Dict[str, str] = Field(..., description="Данные формы")
+    field_types: Dict[str, FieldType] = Field(
+        default_factory=dict, description="Типы полей"
+    )
 
-    @staticmethod
-    def _try_parse_date(value: str, date_format: str) -> bool:
+    @model_validator(mode="before")
+    @classmethod
+    def auto_detect_field_types(cls, values: Dict) -> Dict:
         """
-        Пробует преобразовать строку в дату по указанному формату.
+        Автоматически определяет типы полей на основе переданных данных.
+        """
+        data = values.get("data", {})
+        validators = FieldValidator.get_validators()
 
-        :param value: Строка для преобразования.
-        :param date_format: Формат, в котором ожидается дата.
-        :return: True, если строка соответствует формату даты, иначе False.
-        """
-        try:
-            datetime.strptime(value, date_format)
-            return True
-        except ValueError:
-            return False
+        def detect_type(value: str) -> FieldType:
+            for field_type, validator_cls in validators.items():
+                if validator_cls.validate(value):
+                    return field_type
+            return "text"
 
-    @staticmethod
-    def get_validators() -> List[Tuple[FieldType, Callable[[str], bool]]]:
-        """
-        Возвращает список валидаторов для различных типов полей.
-
-        :return: Список валидаторов для каждого типа данных.
-        """
-        return [
-            (
-                "date",
-                lambda v: any(
-                    FormData._try_parse_date(v, fmt) for fmt in ["%d.%m.%Y", "%Y-%m-%d"]
-                ),
-            ),
-            (
-                "phone",
-                lambda v: bool(
-                    re.match(r"^\+?[1-9]\d{0,2} \d{3} \d{3} \d{2} \d{2}$", v)
-                ),
-            ),
-            (
-                "email",
-                lambda v: bool(
-                    re.match(r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$", v)
-                ),
-            ),
-            ("text", lambda v: bool(re.match(r"^[\w\s.,!?'-]{1,256}$", v))),
-        ]
-
-    def validate_field(self, value: str) -> FieldType:
-        """
-        Валидирует значение и определяет его тип.
-
-        :param value: Строка для валидации.
-        :return: Тип поля, определённый на основе валидации.
-        """
-        for field_type, validator in self.get_validators():
-            if validator(value):
-                return field_type
-        return "text"
-
-    def detect_field_types(self) -> Dict[str, FieldType]:
-        """
-        Выполняет типизацию полей на лету.
-
-        :return: Словарь с типами для каждого поля.
-        """
-        return {
-            field_name: self.validate_field(value)
-            for field_name, value in self.data.items()
+        values["field_types"] = {
+            field: detect_type(value) for field, value in data.items()
         }
+        return values

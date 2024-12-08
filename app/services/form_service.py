@@ -45,7 +45,7 @@ class FormService:
         :return: Если шаблон найден, возвращается объект FormTemplate.
                  В противном случае возвращается типизация полей формы в виде словаря.
         """
-        input_field_types = form_data.detect_field_types()
+        input_field_types = form_data.field_types
 
         for template in templates:
             if all(
