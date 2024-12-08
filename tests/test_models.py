@@ -47,42 +47,30 @@ def invalid_form_template():
     return {"email": "email", "phone": "phone", "message": "text"}
 
 
-def test_validate_field_email(form_data):
+def test_auto_detect_field_types(form_data):
     """
-    Проверяет, что метод validate_field корректно определяет тип `email`.
-    """
-    assert form_data.validate_field("test@example.com") == "email"
-
-
-def test_validate_field_phone(form_data):
-    """
-    Проверяет, что метод validate_field корректно определяет тип `phone`.
-    """
-    assert form_data.validate_field("+7 123 456 78 90") == "phone"
-
-
-def test_validate_field_date(form_data):
-    """
-    Проверяет, что метод validate_field распознает дату в различных форматах.
-    """
-    assert form_data.validate_field("2023-12-06") == "date"
-    assert form_data.validate_field("06.12.2023") == "date"
-
-
-def test_validate_field_text(form_data):
-    """
-    Проверяет, что метод validate_field корректно определяет текстовые поля.
-    """
-    assert form_data.validate_field("Hello, world!") == "text"
-
-
-def test_detect_field_types(form_data):
-    """
-    Проверяет, что метод detect_field_types возвращает правильные типы полей.
+    Проверяет, что `field_types` автоматически заполняется корректно.
     Ожидаемый результат: словарь с типами всех полей формы.
     """
     expected = {"email": "email", "phone": "phone", "message": "text", "date": "date"}
-    assert form_data.detect_field_types() == expected
+    assert form_data.field_types == expected
+
+
+def test_field_validators():
+    """
+    Проверяет, что валидаторы работают корректно для различных типов.
+    """
+    from app.models.form_template import FieldValidator
+
+    validators = FieldValidator.get_validators()
+
+    assert validators["email"].validate("test@example.com")
+    assert validators["phone"].validate("+1 123 456 78 90")
+    assert validators["date"].validate("2023-12-06")
+    assert validators["date"].validate("06.12.2023")
+    assert not validators["email"].validate("test@examplecom")
+    assert not validators["phone"].validate("12345")
+    assert not validators["date"].validate("2024/11/09")
 
 
 def test_split_name_and_fields(form_template):
